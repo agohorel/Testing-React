@@ -10,18 +10,19 @@ export default function StarWarsCharacters() {
   const [next, setNext] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [characters, setCharacters] = useState([]);
-  useEffect(() => {
-    setIsLoading(true);
-    const getCharacters = async () => {
-      const characters = await getData(url);
-      console.log(characters);
-      setNext(characters.next);
-      setPrevious(characters.previous);
-      setCharacters(characters.results);
-      setIsLoading(false);
-    };
-    getCharacters();
-  }, [url]);
+  
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   const getCharacters = async () => {
+  //     const characters = await getData(url);
+  //     console.log(characters);
+  //     setNext(characters.next);
+  //     setPrevious(characters.previous);
+  //     setCharacters(characters.results);
+  //     setIsLoading(false);
+  //   };
+  //   getCharacters();
+  // }, [url]);
 
   const goToNext = e => {
     e.preventDefault();

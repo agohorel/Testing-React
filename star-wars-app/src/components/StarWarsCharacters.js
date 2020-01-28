@@ -7,22 +7,22 @@ import "./star-wars-characters.css";
 export default function StarWarsCharacters() {
   const [url, setUrl] = useState("https://swapi.co/api/people");
   const [previous, setPrevious] = useState();
-  const [next, setNext] = useState();
+  const [next, setNext] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [characters, setCharacters] = useState([]);
   
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   const getCharacters = async () => {
-  //     const characters = await getData(url);
-  //     console.log(characters);
-  //     setNext(characters.next);
-  //     setPrevious(characters.previous);
-  //     setCharacters(characters.results);
-  //     setIsLoading(false);
-  //   };
-  //   getCharacters();
-  // }, [url]);
+  useEffect(() => {
+    setIsLoading(true);
+    const getCharacters = async () => {
+      const characters = await getData(url);
+      console.log(characters);
+      setNext(characters.next);
+      setPrevious(characters.previous);
+      setCharacters(characters.results);
+      setIsLoading(false);
+    };
+    getCharacters();
+  }, [url]);
 
   const goToNext = e => {
     e.preventDefault();
@@ -52,7 +52,7 @@ export default function StarWarsCharacters() {
         </>
       )}
       <div className="buttons">
-        <button onClick={goToPrevious} disabled={!previous}>
+        <button onClick={goToPrevious} >
           Previous
         </button>
         <button onClick={goToNext} disabled={!next}>
